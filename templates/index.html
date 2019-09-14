@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>PL Expected Points</title>
+    <meta name="description" content="The HTML5 Herald">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="page-header">
+        <h1 class="text-center">PL Expected Form</h1>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2>Overachievers:</h2>
+                {% for team in overachievers %}
+                    <p>{{team}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h2>Underachievers:</h2>
+                {% for team in underachievers %}
+                    <p>{{team}}</p>
+                {% endfor %}
+            </div>        
+        </div>
+    </div>
+    <div class="py-4">
+        <footer class="text-muted">
+            <div class="container">
+                <p>By Charlie Jewers</p>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
