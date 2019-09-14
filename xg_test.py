@@ -53,12 +53,12 @@ def get_xpts():
         pt_difference = real_pts - x_pts
     
         if pt_difference > 1:
-            overachievers.append(team_name)
+            overachievers.append((team_name, '%.3f'%(pt_difference)))
         elif pt_difference < -1:
-            underachievers.append(team_name)
+            underachievers.append((team_name, '%.3f'%(pt_difference)))
             
-    overachievers.sort()
-    underachievers.sort()
+    overachievers.sort(key=lambda x: x[1], reverse=True)
+    underachievers.sort(key=lambda x: x[1], reverse=True)
 
     return (overachievers, underachievers)
 
