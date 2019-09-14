@@ -3,7 +3,7 @@ import xg_test
 
 app = Flask(__name__)
 
-data = xg_test.get_data()
+data = xg_test.get_xpts()
 
 @app.route('/')
 def index():
