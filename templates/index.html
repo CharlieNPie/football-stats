@@ -18,9 +18,20 @@
                 <div class="card" id="oa">
                     <div class="card-body">
                         <h2>Clinical:</h2>
-                        <p>Teams scoring more goals than expected from their chances created.</p>
+                        <p>Teams scoring significantly more goals than expected from their chances created.</p>
                         {% for team in goals_outliers[0] %}
                             <p>{{team[0]}} (+{{team[1]}})</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" id="oa">
+                    <div class="card-body">
+                        <h2>Overachieving Defences:</h2>
+                        <p>Teams conceding significantly less goals than expected from their opponents' chances created.</p>
+                        {% for team in conceded_outliers[1] %}
+                            <p>{{team[0]}} ({{team[1]}})</p>
                         {% endfor %}
                     </div>
                 </div>
@@ -44,9 +55,20 @@
                 <div class="card" id="ua">
                     <div class="card-body">
                         <h2>Wasteful:</h2>
-                        <p>Teams scoring less goals than expected from their chances created.</p>
+                        <p>Teams scoring significantly less goals than expected from their chances created.</p>
                         {% for team in goals_outliers[1] %}
                             <p>{{team[0]}} ({{team[1]}})</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" id="ua">
+                    <div class="card-body">
+                        <h2>Underachieving Defences:</h2>
+                        <p>Teams conceding significantly more goals than expected from their opponents' chances created.</p>
+                        {% for team in conceded_outliers[0] %}
+                            <p>{{team[0]}} (+{{team[1]}})</p>
                         {% endfor %}
                     </div>
                 </div>
