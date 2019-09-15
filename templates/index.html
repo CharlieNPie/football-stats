@@ -1,34 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>PL Expected Points</title>
-    <meta name="description" content="The HTML5 Herald">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+{% extends 'base.html' %}
 
-<body>
-    <div class="page-header py-4">
-        <h1 class="text-center">PL Expected Form</h1>
-    </div>
+{% block body %}
     <div class="container pb-4">
-        <div class="card">
-            <div class="card-body">
-                <h2>Overachievers:</h2>
-                {% for team in overachievers %}
-                    <p>{{team[0]}} (+{{team[1]}})</p>
-                {% endfor %}
+        <div class="row">
+            <div class="col">
+                <div class="card" id="oa">
+                    <div class="card-body">
+                        <h2>Overachievers:</h2>
+                        <p>Teams achieving significantly above their expected points.</p>
+                        {% for team in pts_outliers[0] %}
+                            <p>{{team[0]}} (+{{team[1]}})</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" id="oa">
+                    <div class="card-body">
+                        <h2>Clinical:</h2>
+                        <p>Teams scoring more goals than expected from their chances created.</p>
+                        {% for team in goals_outliers[0] %}
+                            <p>{{team[0]}} (+{{team[1]}})</p>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="container">
-        <div class="card">
-            <div class="card-body">
-                <h2>Underachievers:</h2>
-                {% for team in underachievers %}
-                <p>{{team[0]}} ({{team[1]}})</p>
-                {% endfor %}
-            </div>        
+        <div class="row">
+            <div class="col">
+                <div class="card" id="ua">
+                    <div class="card-body">
+                        <h2>Underachievers:</h2>
+                        <p>Teams achieving significantly below their expected points.</p>
+                        {% for team in pts_outliers[1] %}
+                        <p>{{team[0]}} ({{team[1]}})</p>
+                        {% endfor %}
+                    </div>        
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" id="ua">
+                    <div class="card-body">
+                        <h2>Wasteful:</h2>
+                        <p>Teams scoring less goals than expected from their chances created.</p>
+                        {% for team in goals_outliers[1] %}
+                            <p>{{team[0]}} ({{team[1]}})</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <footer class="text-muted py-4">
@@ -36,6 +58,4 @@
             <p>By Charlie Jewers</p>
         </div>
     </footer>
-
-</body>
-</html>
+{% endblock %}

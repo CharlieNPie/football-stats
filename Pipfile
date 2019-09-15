@@ -10,6 +10,7 @@ pylint = "*"
 understat = "*"
 asyncio = "*"
 flask = "*"
+numpy = "*"
 
 [requires]
 python_version = "3.7"
