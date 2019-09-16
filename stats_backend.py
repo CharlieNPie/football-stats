@@ -20,6 +20,9 @@ async def fixture_data():
         )
     return results
 
+#gets just a list of team names
+
+#gets all data for teams, including names and match history
 def get_team_data():
     loop = asyncio.get_event_loop()
     results = loop.run_until_complete(fixture_data())
