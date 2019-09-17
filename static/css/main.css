@@ -1,3 +1,5 @@
+/* header design */
+
 #oa {
     background-color: #ABEBC6
 }
@@ -42,4 +44,11 @@
 @-o-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+/* dropdown menu */
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
 }
