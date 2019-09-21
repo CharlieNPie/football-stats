@@ -11,6 +11,8 @@ import math
 import numpy as np
 
 
+# ---------------- HOMEPAGE ---------------------------------
+
 #gets match data for every team in EPL
 async def fixture_data():
     async with aiohttp.ClientSession() as session:
@@ -20,7 +22,6 @@ async def fixture_data():
         )
     return results
 
-#gets just a list of team names
 
 #gets all data for teams, including names and match history
 def get_team_data():
@@ -156,3 +157,19 @@ def get_xgoals_against():
     underachievers.sort(key=lambda x: x[1], reverse=True)
 
     return(overachievers, underachievers)
+
+# ------------------------- TEAM PAGES -----------------------------
+
+async def results():
+    async with aiohttp.ClientSession() as session:
+        understat = Understat(session)
+        fixtures = await understat.get_team_results(
+            "Manchester United",
+            2019
+        )
+        return fixtures
+
+def get_results_data():
+    loop = asyncio.get_event_loop()
+    return loop.run_until_complete(results())
+
