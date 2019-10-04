@@ -160,16 +160,25 @@ def get_xgoals_against():
 
 # ------------------------- TEAM PAGES -----------------------------
 
-async def results():
+async def results(team_name):
     async with aiohttp.ClientSession() as session:
         understat = Understat(session)
         fixtures = await understat.get_team_results(
-            "Manchester United",
+            team_name,
             2019
         )
         return fixtures
 
-def get_results_data():
-    loop = asyncio.get_event_loop()
-    return loop.run_until_complete(results())
+def get_all_results_data():
+    team_names = get_team_data()[0]
+
+    all_team_data = {}
+
+    for team_name in team_names:
+        loop = asyncio.get_event_loop()
+        team_data = loop.run_until_complete(results(team_name))
+        all_team_data[team_name] = team_data
+
+    return all_team_data
+
 
